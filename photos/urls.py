@@ -3,5 +3,7 @@ from . import views
 
 
 urlpatterns = [
-    path("", views.home, name="home"),
+    path("", views.GalleryHomeView, name="home"),
+    path("add/", views.AddPhotoView, name="add-photo"),
+    path("photo/<str:pk>", views.PhotoView, name="photo"),
 ]
