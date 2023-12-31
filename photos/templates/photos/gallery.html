@@ -30,9 +30,14 @@
                         Categories
                     </div>
                     <ul class="list-group list-group-flush">
-                        <li class="list-group-item">An item</li>
-                        <li class="list-group-item">A second item</li>
-                        <li class="list-group-item">All</li>
+                        {% for category in categories %}
+                        <li class="list-group-item">
+                            <a href="{% url 'home' %}?category={{category.name}}">{{category.name}}</a>
+                        </li>
+                        {% endfor %}
+                        <li class="list-group-item">
+                            <a href="{% url 'home' %}">All</a>
+                        </li>
                         <a href="{% url 'add-photo' %}" class="btn btn-dark btn-block btn-sm m-1">Add Photo</a>
                     </ul>
                 </div>
@@ -40,16 +45,19 @@
             </div>
             <div class="col-md-9">
                 <div class="row">
+                    {% for photo in photos %}
                     <div class="col-md-4">
                         <div class="card my-2">
-                            <img class="image-thumbnail"
-                                src="https://cdn.freecodecamp.org/curriculum/cat-photo-app/relaxing-cat.jpg" alt="">
+                            <img class="image-thumbnail" src="{{photo.image.url}}" alt="">
                             <div class="card-body">
-                                <small>Category: </small>
+                                <small>Category: {{photo.category.name}} </small>
                             </div>
-                            <a href="{% url 'photo' 5 %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                            <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                         </div>
                     </div>
+                    {% empty %}
+                    <h1>No Photos ... </h1>
+                    {% endfor %}
                 </div>
             </div>
         </div>
