@@ -20,7 +20,7 @@
 </head>
 
 <body class="m-5">
-
+    {% include 'navbar.html' %}
     <div class="container">
         <div class="row">
             <div class="col-md-3">
@@ -32,13 +32,13 @@
                     <ul class="list-group list-group-flush">
                         {% for category in categories %}
                         <li class="list-group-item">
-                            <a href="{% url 'home' %}?category={{category.name}}">{{category.name}}</a>
+                            <a href="{% url 'photos:home' %}?category={{category.name}}">{{category.name}}</a>
                         </li>
                         {% endfor %}
                         <li class="list-group-item">
-                            <a href="{% url 'home' %}">All</a>
+                            <a href="{% url 'photos:home' %}">All</a>
                         </li>
-                        <a href="{% url 'add-photo' %}" class="btn btn-dark btn-block btn-sm m-1">Add Photo</a>
+                        <a href="{% url 'photos:add-photo' %}" class="btn btn-dark btn-block btn-sm m-1">Add Photo</a>
                     </ul>
                 </div>
 
@@ -52,7 +52,7 @@
                             <div class="card-body">
                                 <small>Category: {{photo.category.name}} </small>
                             </div>
-                            <a href="{% url 'photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
+                            <a href="{% url 'photos:photo' photo.id %}" class="btn btn-outline-dark btn-sm m-1">View</a>
                         </div>
                     </div>
                     {% empty %}

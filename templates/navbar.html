@@ -1,4 +1,7 @@
 <a href="/">
     <h3>SnapGallery Logo</h3>
+    {% if user.is_authenticated %}
+    <small> Hello! {{user.username}}</small>
+    {% endif %}
 </a>
 <hr>
