@@ -2,6 +2,10 @@
     <h3>SnapGallery Logo</h3>
     {% if user.is_authenticated %}
     <small> Hello! {{user.username}}</small>
+
+    <small><a href="{% url 'signout' %}">Logout</a></small>
     {% endif %}
+
+
 </a>
 <hr>

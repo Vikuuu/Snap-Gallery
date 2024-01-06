@@ -60,3 +60,8 @@ def loginView(request):
 
     context = {"form": form}
     return render(request, "accounts/login.html", context)
+
+
+def logoutView(request):
+    logout(request)
+    redirect("signin")
