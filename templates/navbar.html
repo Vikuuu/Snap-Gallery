@@ -1,11 +1,8 @@
 <a href="/">
     <h3>SnapGallery Logo</h3>
-    {% if user.is_authenticated %}
-    <small> Hello! {{user.username}}</small>
-
-    <small><a href="{% url 'signout' %}">Logout</a></small>
-    {% endif %}
-
-
 </a>
+{% if user.is_authenticated %}
+<small> Hello! {{user.username}}</small>
+<small><a href="{% url 'auth:signout' %}">Logout</a></small>
+{% endif %}
 <hr>

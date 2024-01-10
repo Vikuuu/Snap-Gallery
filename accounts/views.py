@@ -64,4 +64,4 @@ def loginView(request):
 
 def logoutView(request):
     logout(request)
-    redirect("signin")
+    return redirect("auth:signin")
