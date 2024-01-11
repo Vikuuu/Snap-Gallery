@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import UserRegisterForm, UserLoginForm
 from django.contrib.auth import get_user_model
 from django.contrib.auth import authenticate, login, logout
+from user_profile.models import UserProfile
 
 User = get_user_model()
 
@@ -24,8 +25,17 @@ def registerView(request):
                     password=password,
                 )
 
+                user_profile = UserProfile.objects.create(
+                    user=user,
+                    first_name="",
+                    last_name="",
+                    about="",
+                    website="",
+                )
+                user_profile.save()
+
                 messages.success(request, f"Account created for {username}!")
-                return redirect("signin")
+                return redirect("auth:signin")
 
     except Exception as e:
         raise e
@@ -53,7 +63,7 @@ def loginView(request):
 
                 else:
                     form.add_error(None, "Username or password incorrect")
-                    return redirect("signin")
+                    return redirect("auth:signin")
 
     except Exception as e:
         raise e
