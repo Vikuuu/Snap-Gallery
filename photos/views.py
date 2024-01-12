@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from .models import Category, Photo
 from django.contrib.auth.decorators import login_required
+from user_profile.models import UserProfile
 
 
 @login_required(login_url="auth:signin")
@@ -19,7 +20,9 @@ def GalleryHomeView(request):
 
 def PhotoView(request, pk):
     photo = Photo.objects.get(id=pk)
-    context = {"photo": photo}
+    user = photo.user
+    user_profile = UserProfile.objects.get(user=user)
+    context = {"photo": photo, "user": user, "profile": user_profile}
     return render(request, "photos/photo.html", context)
 
 
