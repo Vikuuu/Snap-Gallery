@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     # Local Apps
     "accounts",
     "photos",
+    "user_profile",
 ]
 
 MIDDLEWARE = [
@@ -132,4 +133,3 @@ STATIC_ROOT = BASE_DIR / "staticfiles"
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 AUTH_USER_MODEL = "accounts.UserAccount"
-
